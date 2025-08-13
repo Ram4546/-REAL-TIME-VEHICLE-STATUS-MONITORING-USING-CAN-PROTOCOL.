@@ -48,23 +48,24 @@ Core Components:
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ##  Project Structure
-''' plaintext
+
+```plaintext
 /src
- ├── main_node.c
- ├── fuel_node.c
- ├── indicator_node.c
- ├── lcd.c
- ├── lcd_defines.h
- ├── can.c
- ├── can.h
- ├── can_defines.h
- ├── adc.c
- ├── adc_defines.h
- ├── interrupt.h
- ├-─ types.h
- |-- uart_tx.c
- |-- uart_defines.h
-  '''
+├── main_node.c
+├── fuel_node.c
+├── indicator_node.c
+├── lcd.c
+├── lcd_defines.h
+├── can.c
+├── can.h
+├── can_defines.h
+├── adc.c
+├── adc_defines.h
+├── interrupt.h
+├── types.h
+├── uart_tx.c
+└── uart_defines.h
+```
 
 2. **Syatem Architecture.**
    Mention nodes and their functions clearly:
