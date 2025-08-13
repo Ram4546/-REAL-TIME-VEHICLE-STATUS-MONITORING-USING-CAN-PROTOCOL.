@@ -48,6 +48,7 @@ Core Components:
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ##  Project Structure
+'''
 /src
  ├── main_node.c
  ├── fuel_node.c
@@ -63,7 +64,7 @@ Core Components:
  ├-─ types.h
  |-- uart_tx.c
  |-- uart_defines.h
-
+'''
 2. **Syatem Architecture.**
    Mention nodes and their functions clearly:
 
