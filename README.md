@@ -1,7 +1,7 @@
 # -REAL-TIME-VEHICLE-STATUS-MONITORING-USING-CAN-PROTOCOL.
 The aim of the project is to enhance vehicle safety and monitoring by using Controller Area Network (CAN) protocol. This system is designed to display critical vehicle parameters such as fuel percentage, indicator status, and airbag status/activation in real time.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Real Time Vehicle Status Monitoring Using CAN Protocol
 
 ## Overview
@@ -26,16 +26,24 @@ By utilizing CAN communication, this system provides reliable and efficient data
 
 ### Hardware
 - CAN-enabled microcontroller or development board  
-  *(e.g., Arduino with MCP2515 CAN Module, STM32, Raspberry Pi with CAN hat)*  
-- Vehicle or CAN simulator setup
-- Display / debugging interface (Serial Monitor, LCD, etc.)
+Core Components:
+    -> LPC2129 ARM7 Microcontroller Board – Main controller for CAN communication and sensor interfacing.
+
+    -> MCP2551 / SN65HVD230 CAN Transceiver – Converts CAN protocol signals between the microcontroller and CAN bus.
+
+    -> 16x2 LCD Display – For displaying status messages (indicator status, fuel level, airbag alert).
+
+-**Sensors**->MMA7660 Accelerometer – Detects sudden impact or acceleration changes for airbag detection.
+    Fuel Level Sensor – Provides fuel percentage data to be transmitted over CAN.
+
+-**Switches / Inputs**:
+    Push Buttons or Toggle Switches – For Left & Right indicator signal triggering (via EINT0 and EINT1).
 
 ### Software
 - **C / C++** for firmware  
 - **CAN library** for chosen hardware platform  
-- **GNU GCC** or platform toolchain for compilation  
-- **PlatformIO** / Arduino IDE / STM32CubeIDE (depending on MCU)
-- **Git** for version control
+- **PlatformIO** Keil µVision – For ARM7 (LPC2129) embedded C development, code compilation, and hardware debugging.
+- **Serial Terminal** – For UART-based debugging and monitoring CAN message flow during runtime.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -52,17 +60,19 @@ By utilizing CAN communication, this system provides reliable and efficient data
  ├── adc.c
  ├── adc_defines.h
  ├── interrupt.h
- ├── types.h
+ ├-─ types.h
+ |-- uart_tx.c
+ |-- uart_defines.h
 
-2. **Build & Upload Firmware**
-- Using Arduino IDE:
-  - Install required CAN library (e.g., MCP_CAN_lib for MCP2515)
-  - Select correct board & COM port
-  - Compile and upload
+2. **Syatem Architecture.**
+   Mention nodes and their functions clearly:
 
-3. **Connect Hardware**
-- Hook up CAN transceiver module to the microcontroller.
-- Connect to the vehicle CAN bus or a CAN simulator.
+    - Main Node – Has MMA7660 accelerometer for sudden impact detection (airbag deployment alert). Sends alert to other nodes.
+
+   - Fuel Node – Measures fuel level (via ADC) and sends it over CAN.
+
+    - Indicator Node – Handles indicator lights, hazard alerts, etc.
+    All communicate over the CAN bus.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
